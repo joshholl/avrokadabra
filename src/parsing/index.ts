@@ -1,5 +1,5 @@
 
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 import { NamedObject, TypedObject, RecordDeclaration, EnumDeclaration, Primitive, isPrimative, isStructure, isEnum } from '../declarations';
 import { booleanGenerator } from '../generating/booleanGenerator';
@@ -57,22 +57,14 @@ const parseSection = (obj: TypedObject): SampleDataGenerator => {
 
 
 
-export async function parse(filename: string) {
-    const file = fs.readFileSync(filename, 'utf-8');
+export async function parseSchema(filename: string) {
+    const stat = await fs.lstat(filename);
+    if(!stat.isFile()) {
+        console.error("Unable to find schema file")
+    }
+    const file = await fs.readFile(filename, 'utf-8');
     const schemaJson = JSON.parse(file);
     console.log(schemaJson)
     const obj = parseSection(schemaJson)
-   console.log('the resulting data was ', JSON.stringify(obj.generate()));
-
-
-
-
-}
-
-const filePath = path.join(__dirname, 'simpleRecord.avsc');
-console.log(filePath)
-try {
-parse(filePath).then(a => console.log('all done'))
-} catch (e) {
-    console.error(e)
+    console.log('the resulting data was ', JSON.stringify(obj.generate()));
 }
