@@ -1,0 +1,19 @@
+{
+  "name": "avrokadabra",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Josh Hollandsworth",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.7.8",
+    "typescript": "^4.4.2"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.172",
+    "lodash": "^4.17.21"
+  }
+}

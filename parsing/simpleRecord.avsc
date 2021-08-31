@@ -1,0 +1,33 @@
+{
+    "type": "record",
+    "name": "Thing",
+    "namespace": "com.whatever",
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "age",
+            "type": "int"
+        },
+        {
+            "name": "isAwesome",
+            "type": "boolean"
+        },
+        {
+            "name": "hair",
+            "type": "enum",
+            "symbols": [
+                "NONE", "SOME", "LOTS","FLOWING"
+            ]
+        },
+        {
+            "name": "pets_name",
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    ]
+}
